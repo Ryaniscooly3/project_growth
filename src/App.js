@@ -1,9 +1,16 @@
 import Navbar from "./Navbar";
 import Home from "./Home";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import Prompt from './components/Prompt'
 
 function App() {
+  const [Goal, setGoal] = useState("");
   return (
       <div className="App">
+        <Prompt Goal={Goal} setGoal={setGoal} />
+        {/* display goal */}
+        <p>{Goal}</p>
         <Navbar />
         <div className="content">
           <Home />
@@ -11,23 +18,4 @@ function App() {
       </div>
   );
 }
-
 export default App;
-
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import Prompt from './components/Prompt'
-
-function App() {
-    const [whatGoal, setGoal] = useState("");
-    return ( <div>
-        {/*  pass setter function down  */}
-        <Prompt whatGoal={whatGoal} setGoal={setGoal} />
-        {/* display goal */}
-        <p>{whatGoal}</p>
-        </div>
-    );
-}
-
-
-ReactDOM.render(<App/>, document.getElementById('root'))

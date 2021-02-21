@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import BlogList from "./BlogList";
+import VineList from "./VineList";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([]);
+  const [vines, setVines] = useState([]);
   const [counter, setCounter] = useState(0);
 
   // const [name, setName] = useState('mario');
@@ -69,9 +69,9 @@ const Home = () => {
       //.then((response) => response.text())
       .then((result) => {
         console.log(result);
-        const blog = { imageNumber: counter, src: result.data.link };
+        const vine = { imageNumber: counter, src: result.data.link };
         setCounter(counter + 1);
-        setBlogs([blog, ...blogs]);
+        setVines([vine, ...vines]);
         window.scrollTo(0,document.body.scrollHeight);
       })
       .catch((error) => console.log("error", error));
@@ -91,10 +91,10 @@ const Home = () => {
     console.log("use effect ran");
   }, []);
 
-  console.log(blogs);
+  console.log(vines);
   return (
     <div className="home">
-      <BlogList blogs={blogs} />
+      <VineList vines={vines} />
       {/* <input type="image" src="logo192" alt="Submit" onChange={ handleImage }/> */}
       {/* <input type="text" onChange={handleImage} /> */}
       <Dropzone onDrop={handleImage} accept="image/*" multiple={false}>
