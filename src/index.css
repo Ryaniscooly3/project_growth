@@ -95,3 +95,24 @@ body {
 .navbar a:hover {
   color: #2CAB37;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.content {
+  padding: 20px;
+  min-height: 100%;
+  margin: 0 auto -50px;
+}
+
+.footer,
+.push {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(147, 220, 119);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
