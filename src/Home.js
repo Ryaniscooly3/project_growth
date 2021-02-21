@@ -2,17 +2,11 @@ import { useState, useEffect } from "react";
 import VineList from "./VineList";
 import Dropzone from "react-dropzone";
 import request from "superagent";
+import App from "./App";
 
 const Home = () => {
   const [vines, setVines] = useState([]);
   const [counter, setCounter] = useState(0);
-
-  // const [name, setName] = useState('mario');
-
-  // const handleDelete = (id) => {
-  //     const newBlogs = blogs.filter(blog => blog.id !== id);
-  //     setBlogs(newBlogs);
-  // }
 
   const handleImage = (event) => {
     var myHeaders = new Headers();
@@ -31,60 +25,68 @@ const Home = () => {
       redirect: "follow",
     };
 
-    Promise
-      .resolve(
-         {
-          data: {
-            id: "orunSTu",
-            title: null,
-            description: null,
-            datetime: 1495556889,
-            type: "image/gif",
-            animated: false,
-            width: 1,
-            height: 1,
-            size: 42,
-            views: 0,
-            bandwidth: 0,
-            vote: null,
-            favorite: false,
-            nsfw: null,
-            section: null,
-            account_url: null,
-            account_id: 0,
-            is_ad: false,
-            in_most_viral: false,
-            tags: [],
-            ad_type: 0,
-            ad_url: "",
-            in_gallery: false,
-            deletehash: "x70po4w7BVvSUzZ",
-            name: "",
-            link: "http://i.imgur.com/orunSTu.gif",
-          },
-          success: true,
-          status: 200,
-        }
-      )
+    Promise.resolve({
+      data: {
+        id: "orunSTu",
+        title: null,
+        description: null,
+        datetime: 1495556889,
+        type: "image/gif",
+        animated: false,
+        width: 1,
+        height: 1,
+        size: 42,
+        views: 0,
+        bandwidth: 0,
+        vote: null,
+        favorite: false,
+        nsfw: null,
+        section: null,
+        account_url: null,
+        account_id: 0,
+        is_ad: false,
+        in_most_viral: false,
+        tags: [],
+        ad_type: 0,
+        ad_url: "",
+        in_gallery: false,
+        deletehash: "x70po4w7BVvSUzZ",
+        name: "",
+        link: "http://i.imgur.com/orunSTu.gif",
+      },
+      success: true,
+      status: 200,
+    })
       //.then((response) => response.text())
       .then((result) => {
         console.log(result);
         const vine = { imageNumber: counter, src: result.data.link };
         setCounter(counter + 1);
         setVines([vine, ...vines]);
-        window.scrollTo(0,document.body.scrollHeight);
+        window.scrollTo(0, document.body.scrollHeight);
       })
       .catch((error) => console.log("error", error));
 
-    // const blog = {
-    //   imageNumber: counter,
-    //   src:
-    //     "https://tse1.mm.bing.net/th?id=OIP.M9AsZ7Sm6Qq-LXpY92Tt2AHaEK&pid=Api",
-    // };
-    // setCounter(counter + 1);
-    // setBlogs([blog, ...blogs]);
-    // // React transition? Animation
-    // window.scrollTo(0,document.body.scrollHeight);
+    // fetch("https://api.imgur.com/3/image", requestOptions)
+    //   .then((response) => response.text())
+    //   .then((result) => {
+    //         console.log(result);
+    //         const vine = { imageNumber: counter, src: result.data.link };
+    //         setCounter(counter + 1);
+    //         setVines([vine, ...vines]);
+    //         window.scrollTo(0,document.body.scrollHeight);
+    //       })
+    //   .catch((error) => console.log("error", error));
+
+    const vine = {
+      imageNumber: counter,
+      src:
+        "https://tse1.mm.bing.net/th?id=OIP.M9AsZ7Sm6Qq-LXpY92Tt2AHaEK&pid=Api",
+    };
+    setCounter(counter + 1);
+    setVines([vine, ...vines]);
+    // React transition? Animation
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   useEffect(() => {
