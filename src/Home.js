@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import VineList from "./VineList";
 import Dropzone from "react-dropzone";
-import request from "superagent";
-import App from "./App";
 
 const Home = () => {
   const [vines, setVines] = useState([]);
+  const [mids, setMids] = useState([]);
   const [counter, setCounter] = useState(0);
+
+  const cycleMids = () => {
+    if (counter % 2 === 0) {
+      return "vine2.png";
+    } else {
+      return "vine.png";
+    }
+  };
 
   const handleImage = (event) => {
     var myHeaders = new Headers();
@@ -57,48 +64,41 @@ const Home = () => {
       success: true,
       status: 200,
     })
-      //.then((response) => response.text())
       .then((result) => {
         console.log(result);
         const vine = { imageNumber: counter, src: result.data.link };
+        const mid = { imageNumber: counter, src: cycleMids() };
         setCounter(counter + 1);
         setVines([vine, ...vines]);
+        setMids([mid, ...mids]);
         window.scrollTo(0, document.body.scrollHeight);
       })
       .catch((error) => console.log("error", error));
 
+
+
     // fetch("https://api.imgur.com/3/image", requestOptions)
     //   .then((response) => response.text())
     //   .then((result) => {
-    //         console.log(result);
-    //         const vine = { imageNumber: counter, src: result.data.link };
-    //         setCounter(counter + 1);
-    //         setVines([vine, ...vines]);
-    //         window.scrollTo(0,document.body.scrollHeight);
+        // console.log(result);
+        // const vine = { imageNumber: counter, src: result.data.link };
+        // const mid = { imageNumber: counter, src: cycleMids() };
+        // setCounter(counter + 1);
+        // setVines([vine, ...vines]);
+        // setMids([mid, ...mids]);
+        // window.scrollTo(0, document.body.scrollHeight);
     //       })
     //   .catch((error) => console.log("error", error));
 
-    // const vine = {
-    //   imageNumber: counter,
-    //   src:
-    //     "https://tse1.mm.bing.net/th?id=OIP.M9AsZ7Sm6Qq-LXpY92Tt2AHaEK&pid=Api",
-    // };
-    // setCounter(counter + 1);
-    // setVines([vine, ...vines]);
-    // // React transition? Animation
-    // window.scrollTo(0, document.body.scrollHeight);
+
+
   };
 
-  useEffect(() => {
-    console.log("use effect ran");
-  }, []);
-
   console.log(vines);
+  console.log(mids);
   return (
     <div className="home">
-      <VineList vines={vines} />
-      {/* <input type="image" src="logo192" alt="Submit" onChange={ handleImage }/> */}
-      {/* <input type="text" onChange={handleImage} /> */}
+      <VineList vines={vines} mids={mids}/>
       <Dropzone onDrop={handleImage} accept="image/*" multiple={false}>
         {({ getRootProps, getInputProps }) => {
           return (

@@ -18,9 +18,11 @@ function Prompt({ whatGoal, setGoal }) {
   return (
     <div className="prompt">
       <button onClick={() => setModalIsOpen(true)}>
-      {/*<img className="photo" src={"setAGoal.png"} /> */}
+        <div class="img-container">
+          <img className="photo" src={"setAGoal.png"} align="bottom|mid" />
+        </div>
       Set a Goal</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+      <Modal className="Modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <h2>What is a goal you would like to achieve?</h2>
         <div>
           <input
