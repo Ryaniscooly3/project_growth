@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import VineList from "./VineList";
 import Dropzone from "react-dropzone";
 import request from "superagent";
+<<<<<<< Updated upstream
 import App from "./App";
+=======
+import React from 'react';
+>>>>>>> Stashed changes
 
 const Home = () => {
   const [vines, setVines] = useState([]);
