@@ -78,15 +78,15 @@ const Home = () => {
     //       })
     //   .catch((error) => console.log("error", error));
 
-    const vine = {
-      imageNumber: counter,
-      src:
-        "https://tse1.mm.bing.net/th?id=OIP.M9AsZ7Sm6Qq-LXpY92Tt2AHaEK&pid=Api",
-    };
-    setCounter(counter + 1);
-    setVines([vine, ...vines]);
-    // React transition? Animation
-    window.scrollTo(0, document.body.scrollHeight);
+    // const vine = {
+    //   imageNumber: counter,
+    //   src:
+    //     "https://tse1.mm.bing.net/th?id=OIP.M9AsZ7Sm6Qq-LXpY92Tt2AHaEK&pid=Api",
+    // };
+    // setCounter(counter + 1);
+    // setVines([vine, ...vines]);
+    // // React transition? Animation
+    // window.scrollTo(0, document.body.scrollHeight);
   };
 
   useEffect(() => {
